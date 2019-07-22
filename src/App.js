@@ -17,11 +17,18 @@ function App() {
     setCart([...cart, item]);
   };
 
+  const removeItemById = itemIndex => {
+    //  const itemToRemoveId = itemToRemove.id
+    const newCart = [...cart];
+    newCart.splice(itemIndex, 1);
+    setCart(newCart);
+  };
+
   return (
     <div className="App">
       {/*? why is products and addItem wrapped in object*/}
       <ProductContext.Provider value={{ products, addItem }}>
-        <CartContext.Provider value={cart}>
+        <CartContext.Provider value={{ cart, removeItemById }}>
           <Navigation />
 
           {/* Routes */}
